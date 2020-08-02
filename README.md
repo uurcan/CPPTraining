@@ -1,9 +1,14 @@
-# RetroGamingConsole
-Retro console games written with C++
-Including games are: 
+# C++ Algorithm Training
 
-Maze
-Snake
-Car Race
+Ascii Console applications such as :
 
-All games written with C++ Console Application
+- Sorting algorithm timestamps
+- Array merge using file reader
+- Array merge using standard input
+- Pattern algorithm using file reader
+- Pattern algorithm using standard input
+- Rational numbers calculation using OOP
+- Snake Game
+- Maze Game
+- Car Crash Game
+- RSA Encryption
