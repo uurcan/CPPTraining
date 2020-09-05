@@ -1,26 +1,15 @@
 #include "myVector.h"
 
 template <typename T>
-class iterator {
-private:
-	T* ptr;
-
-public:
-	explicit iterator(): ptr(nullptr){}
-	explicit iterator(T* p): ptr(p){}
-	iterator begin() const;
-	iterator end() const;
-};
+myVector<T>::myVector(int n) : numAllocated(n), arr(new T[n]), numUsed(0) {}
 
 template <typename T>
-myVector<T>::myVector(int n)
-	: numAllocated(n), arr(new T[n]), numUsed(0)
+void myVector<T>::add(T data)
 {
-}
-
-template <typename T>
-int myVector<T>::add(T data)
-{
+	if (numUsed >= numAllocated) {
+		cout << "Out of space." << endl;
+		return;
+	}
 	if (numUsed == numAllocated) {
 		T* old = arr;
 		arr = new T[numAllocated = numAllocated * 2];
@@ -28,16 +17,7 @@ int myVector<T>::add(T data)
 		delete[] old;
 	}
 	arr[numUsed++] = data;
-	return numUsed;
 }
-
-
-template <typename T>
-T myVector<T>::pop_back()
-{
-	return arr[numUsed-- - 1];
-}
-
 
 template <typename T>
 int myVector<T>::size()
@@ -46,44 +26,40 @@ int myVector<T>::size()
 }
 
 template <typename T>
-T& myVector<T>::operator[](int index)
-{
-
-	if (index >= numUsed) {
-		cout << "Error: Array index out of bound";
-		exit(0);
-	}
-
-	return *(arr + index);
-}
-template <typename T>
 void myVector<T>::print() {
-	for (int i = 0; i < numUsed; i++){
-		cout << arr[i] << endl;
-	}
+	for (int i = 0; i < numUsed; i++) {
+		cout << arr[i] << " ";
+	} cout << endl;
 }
 
 template <typename T>
 void myVector<T>::getElement(int num) {
 	int max = size();
-	if (num < 0 || num > max){
-		cout << "Array out of bounds" << endl;
-	} else {
+	if (num < 0 || num > max) {
+		cout << "Out of space." << endl;
+	}
+	else {
 		cout << arr[num] << endl;
 	}
 }
-
 template <typename T>
-void myVector<T>::remove(int num) {
-	int[] temp;
-	int number = size();
-	for (int i = 0; i < numUsed; i++)
-	{
-		if (arr[i] == num){ 
-			arr[i] = arr[i-1]
+myVector<T>::~myVector() {
+
+}
+template <typename T>
+void myVector<T>::remove(T s) {
+	int i;
+	for (i = 0; i < numUsed; i++) {
+		if (arr[i] == s) {
+			break;
 		}
 	}
-	temp = arr[];//todo :: burayı incele..
+	numUsed -= 1;
+	if (i < numUsed) {
+		for (int j = i; j < numUsed; j++) {
+			arr[j] = arr[j + 1];
+		}
+	}
 }
 int main()
 {
